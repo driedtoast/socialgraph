@@ -1,0 +1,16 @@
+
+This project will be based on:
+* Spring 3.0.0 - REST annotations and component wiring
+* Neo4j - graph database
+* Jackson - JSON serialization
+
+The intent is to create a connection based application that is accessible via REST calls. It would be used by a UI, with some experiments being amplesdk for the UI. 
+
+The goals of the inital version is to:
+* create users
+* register users
+* add users to groups
+* add friends to users
+* send invites to users - allowing registration
+
+

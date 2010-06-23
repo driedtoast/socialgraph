@@ -1,0 +1,227 @@
+<ivy-module version="2.0">
+    <info organisation="org.socialgraph" module="socialgraph"/>
+<configurations>
+    	<conf name="build"  description="for build related libraries"/>
+    	<conf name="runtime" description="runtime related libraries"/>
+    	<conf name="test" description="for testing our framework"/>
+    </configurations>
+
+	<dependencies>
+		<dependency org="junit" 
+			name="junit"
+			rev="4.7"
+			config="test->default" />
+
+		  <dependency
+         		org="org.neo4j"
+         		name="neo4j-kernel"
+         		rev="1.1-SNAPSHOT" 
+			config="runtime->default" />
+
+		<dependency
+			org="org.springframework"
+			name="spring-test"
+			rev="${spring.version}"
+			config="test->default" 
+		/>
+
+		<!-- seems like spring-test should pull these dumb things in! -->
+		<dependency 
+			org="org.springframework"
+			name="spring-beans"
+			rev="${spring.version}"
+					    config="runtime->default"
+		/>
+		<dependency 
+			org="org.springframework"
+			name="spring-core"
+			rev="${spring.version}"
+					    config="runtime->default"
+		/>
+		<dependency 
+			org="org.springframework"
+			name="spring-context"
+			rev="${spring.version}"
+					    config="runtime->default"
+		/>
+		<dependency 
+			org="org.springframework"
+			name="spring-context-support"
+			rev="${spring.version}"
+					    config="runtime->default"
+		/>
+		<dependency 
+			org="org.springframework"
+			name="spring-web"
+			rev="${spring.version}"
+					    config="runtime->default"
+		/>
+		<dependency 
+			org="org.springframework"
+			name="spring-webmvc"
+			rev="${spring.version}"
+					    config="runtime->default">
+				<exclusion
+					org="javax.servlet"
+					name="jsp-api" />
+				<exclusion 
+					org="javax.servlet"
+					name="jstl" />
+				<exclusion
+					org="ant"
+					name="ant" />
+				<exclusion 
+					org="qdox"
+					name="qdox" />
+				<exclusion 
+					org="com.lowagie"
+					name="itext" />
+				<exclusion 
+					org="bouncycastle"
+					name="bcmail-jdk14" />
+				<exclusion
+					org="bouncycastle"
+					name="bcprov-jdk14" />
+				<!-- add more hre -->
+				<exclusion 
+					org="jasperreports"
+					name="jasperreports" />
+				<exclusion 
+					org="jfree"
+					name="jcommon" />
+				<exclusion 
+					org="jfree"
+					name="jfreechart" />
+				<exclusion 
+					org="eclipse"
+					name="jdtcore" />
+				<exclusion 
+					org="org.apache.tiles"
+					name="tiles-api" />
+				<exclusion 
+					org="org.apache.tiles"
+					name="tiles-core" />
+				<exclusion
+					org="org.apache.tiles"
+					name="tiles-jsp" />
+				<exclusion
+					org="org.apache.poi"
+					name="poi" />
+				<exclusion 
+					org="velocity-tools"
+					name="velocity-tools-generic" />
+				<exclusion
+					org="velocity-tools"
+					name="velocity-tools-view" />
+				<exclusion
+					org="commons-httpclient"
+					name="commons-httpclient" />
+				<exclusion
+					org="commons-codec"
+					name="commons-codec" />
+				<exclusion
+					org="commons-io"
+					name="commons-io" />
+				<exclusion
+					org="commons-fileupload"
+					name="commons-fileupload" />
+
+				<exclusion
+					org="commons-attributes"
+					name="commons-attributes-api" />
+
+				<exclusion
+					org="commons-attributes"
+					name="commons-attributes-compile" />
+				<exclusion 
+					org="jexcelapi"
+					name="jxl" />
+				<exclusion
+					org="velocity"
+					name="velocity" />
+		</dependency>
+
+		<dependency 
+			org="org.slf4j"
+			name="slf4j-api"
+			rev="1.4.2"
+					    config="runtime->default"
+		/>
+
+		<dependency 
+			org="log4j"
+			name="log4j"
+			rev="1.2.15"
+					    config="runtime->default">
+				<exclusion
+					org="javax.jms"
+					name="jms" />
+				<exclusion 
+					org="javax.mail"
+					name="mail" />
+				<exclusion
+					org="com.sun.jdmk"
+					name="jmxtools" />
+				<exclusion 
+					org="com.sun.jmx"
+					name="jmxri" />
+		</dependency>
+
+		<dependency 
+			org="commons-lang"
+			name="commons-lang"
+			rev="2.5"
+					    config="runtime->default"
+		/>
+		
+		<dependency 
+			org="org.slf4j"
+			name="slf4j-log4j12"
+			rev="1.4.2"
+					    config="runtime->default"
+		/>
+
+		<dependency 
+			org="org.freemarker"
+			name="freemarker"
+			rev="2.3.15"
+					    config="runtime->default"
+		/>
+	
+		<dependency 
+			org="org.apache.lucene"
+			name="lucene-core"
+			rev="${lucene.version}"
+					    config="runtime->default"
+		/> 
+		<dependency 
+			org="org.apache.lucene"
+			name="lucene-snowball"
+			rev="${lucene.version}"
+					    config="runtime->default"
+		/>
+
+		<dependency 
+			org="org.apache.lucene"
+			name="lucene-spellchecker"
+			rev="${lucene.version}"
+			config="runtime->default"
+		/>
+
+		<dependency 
+			org="org.apache.lucene"
+			name="lucene-similarity"
+			rev="2.2.0"
+			config="runtime->default"
+		/>
+
+		<!--  internal dependencies  -->
+		
+		<dependency 
+		    org="javax.servlet"
+		    name="servlet-api"
+		    rev="2.5"
+		    config="runtime->default"
+		/>
+	</dependencies>
+</ivy-module>

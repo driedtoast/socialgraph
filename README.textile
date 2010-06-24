@@ -1,5 +1,5 @@
 
-!tree/master/src/main/webapp/images/logo.png!
+!./tree/master/src/main/webapp/images/logo.png!
 
 h1.Overview
 

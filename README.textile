@@ -11,6 +11,8 @@ This project will be based on:
 The intent is to create a connection based application that is accessible via REST calls. It would be used by a UI, with some experiments being amplesdk for the UI. 
 
 h2. Goals
+
+
 The goals of the inital version is to:
 * create users
 * register users

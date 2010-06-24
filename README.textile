@@ -19,5 +19,4 @@ The goals of the inital version is to:
 * add users to groups
 * add friends to users
 * send invites to users - allowing registration
-
-
+* integration with third-party social apis

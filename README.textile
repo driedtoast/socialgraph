@@ -20,3 +20,8 @@ The goals of the inital version is to:
 * add friends to users
 * send invites to users - allowing registration
 * integration with third-party social apis
+
+
+h2. License
+
+Project is licensed under the "Apache 2 License":http://www.apache.org/licenses/LICENSE-2.0 

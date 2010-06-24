@@ -1,5 +1,5 @@
 
-!./blob/master/src/main/webapp/images/logo.png!
+!./socialgraph/blob/master/src/main/webapp/images/logo.png!
 
 h1.Overview
 

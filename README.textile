@@ -1,7 +1,7 @@
 
 !./socialgraph/raw/master/src/main/webapp/images/logo.png!
 
-h1.Overview
+h1. Overview
 
 This project will be based on:
 * Spring 3.0.0 - REST annotations and component wiring
@@ -10,7 +10,7 @@ This project will be based on:
 
 The intent is to create a connection based application that is accessible via REST calls. It would be used by a UI, with some experiments being amplesdk for the UI. 
 
-h2.Goals
+h2. Goals
 The goals of the inital version is to:
 * create users
 * register users

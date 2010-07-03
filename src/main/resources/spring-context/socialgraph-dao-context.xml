@@ -8,15 +8,9 @@
 	"
 >
 
-	<import resource="classpath*:/spring-context/embedded-neo4j-context.xml"/>
-	<import resource="classpath*:/spring-context/socialgraph-dao-context.xml"/>
 	
-	<bean id="socialgraph.config.PropertyPlaceholderConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-	    <property name="locations">
-			<list>
-				<value>classpath*:/application.properties</value>
-			</list>
-		</property>
+
+	<bean id="personDao" class="org.socialgraph.dao.PersonDao">
 	</bean>
 
 		

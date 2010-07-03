@@ -4,7 +4,7 @@ import org.neo4j.graphdb.Node;
 
 public abstract class AbstractModel {
 
-	private String id;
+	private Long id; // Object-Id Required. Unique identifier for the Model object
 	private Node baseNode;
 	
 	public Node getBaseNode() {
@@ -15,11 +15,11 @@ public abstract class AbstractModel {
 		this.baseNode = baseNode;
 	}
 
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	

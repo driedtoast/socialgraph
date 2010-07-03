@@ -94,7 +94,7 @@ public class Person extends AbstractModel  {
 							// Values.
 	private Boolean hasApp; // Boolean Indicating whether the user has
 							// application installed.
-	private String id; // Object-Id Required. Unique identifier for the Person.
+	
 	private List<String> ims; // Plural-Field <string> Instant messaging address
 								// for this Person. No official canonicalization
 								// rules exist for all instant messaging
@@ -257,13 +257,7 @@ public class Person extends AbstractModel  {
 		this.hasApp = hasApp;
 	}
 
-	public String getId() {
-		return id;
-	}
 
-	public void setId(String id) {
-		this.id = id;
-	}
 
 	public List<String> getIms() {
 		return ims;

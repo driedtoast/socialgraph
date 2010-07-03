@@ -33,4 +33,18 @@ public class ObjectConverterTest {
 		Assert.assertTrue("test name2".equals(obj.getDisplayName()));
 	}
 	
+	@Test
+	public void testNodeConversion() throws Exception {
+		GraphDatabaseService gds = databaseMgr.getDatabaseService();
+		Person obj = new Person();
+		obj.setDisplayName("bob ");
+		obj.setAboutMe("who");
+		Transaction tx = databaseMgr.startTransaction();
+		Node node = gds.createNode();
+		ObjectConverter.convertToNode(obj, node);
+		databaseMgr.endTransaction(tx);
+		Assert.assertNotNull(obj.getDisplayName().equals(node.getProperty("displayName")));
+		
+	}
+	
 }

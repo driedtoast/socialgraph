@@ -4,9 +4,12 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 
+import org.apache.commons.beanutils.BeanMap;
 import org.apache.commons.beanutils.BeanUtils;
 import org.neo4j.graphdb.Node;
+import org.socialgraph.model.AbstractModel;
 
 public class ObjectConverter {
 
@@ -16,11 +19,31 @@ public class ObjectConverter {
 	 * @return
 	 */
 	public static Map<String,Object> convert(Object obj) {
-		Map<String,Object> attrs = null;
-		
+		Map<String,Object> attrs = new BeanMap(obj);
 		return attrs;
 	}
 	
+	public static boolean isSafeProperty(Object obj) {
+		return !( obj instanceof Class );
+	}
+	
+	/**
+	 * Converts an object to a node 
+	 * @param obj
+	 * @return
+	 */
+	public static Node convertToNode(AbstractModel model, Node node) {
+		Map<String,Object> attrs = convert(model);
+		Set<String> keys = attrs.keySet();
+		for (String key: keys) {
+			Object obj = attrs.get(key);
+			if(obj == null || !isSafeProperty(obj)) {
+				continue;
+			}
+			node.setProperty(key, obj);
+		}
+		return node;
+	}
 	
 	/**
 	 * Populates an object from a node

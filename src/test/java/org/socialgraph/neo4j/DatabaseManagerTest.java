@@ -27,6 +27,7 @@ public class DatabaseManagerTest {
 		Assert.assertNotNull(gds);
 		Transaction tx = databaseMgr.startTransaction();
 		Node firstNode = gds.createNode();
+		
 		Node secondNode = gds.createNode();
 		Relationship relationship = firstNode.createRelationshipTo( secondNode, ConnectionType.KNOWS );
 		 

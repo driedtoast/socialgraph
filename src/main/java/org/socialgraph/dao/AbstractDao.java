@@ -19,6 +19,18 @@ public class AbstractDao {
 	protected DatabaseManager databaseMgr;
 	
 	/**
+	 * Setup the node
+	 * 
+	 * @param model
+	 * @param node
+	 */
+	public void setupNode(AbstractModel model, Node node) {
+		model.setId(node.getId());
+		model.setBaseNode(node);
+	}
+	
+	
+	/**
 	 * Creates a node to start with
 	 * 
 	 * @return

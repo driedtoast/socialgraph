@@ -30,6 +30,9 @@ import java.util.Map;
  */
 public class Person extends AbstractModel  {
 
+	public static final String DISPLAY_NAME="displayName";
+	
+	
 	private List<Account> accounts; // Plural-Field <Account> An online account
 									// held by this Person.
 

@@ -15,7 +15,11 @@ public class PersonDaoTest {
 	@Autowired
 	private PersonDao personDao;
 	
-	
+	/**
+	 * Tests a create
+	 * 
+	 * @throws Exception
+	 */
 	@Test
 	public void testPersonCreate() throws Exception {
 		Person obj = new Person();
@@ -23,6 +27,26 @@ public class PersonDaoTest {
 		obj.setAboutMe("who");
 		personDao.savePerson(obj);
 		Assert.assertNotNull(obj.getId());
+		
+	}
+
+	/**
+	 * Get a display name
+	 * 
+	 * @throws Exception
+	 */
+	@Test
+	public void testPersonGetByDisplayName() throws Exception {
+		Person obj = new Person();
+		obj.setDisplayName("bob");
+		obj.setAboutMe("who");
+		personDao.savePerson(obj);
+		Long id = obj.getId();
+		Assert.assertNotNull(id);
+		
+		Person person = personDao.getByDisplayName("bob");
+		Assert.assertNotNull(person);
+		Assert.assertTrue(id.equals(person.getId()));
 		
 	}
 		

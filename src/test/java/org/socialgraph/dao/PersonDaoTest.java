@@ -8,9 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations={"classpath*:/spring-context/socialgraph-context.xml"})
-public class PersonDaoTest {
+
+public class PersonDaoTest extends AbstractDaoTest {
 
 	@Autowired
 	private PersonDao personDao;
@@ -44,9 +43,7 @@ public class PersonDaoTest {
 		Long id = obj.getId();
 		Assert.assertNotNull(id);
 		
-		Person person = personDao.getByDisplayName("bob");
-		Assert.assertNotNull(person);
-		Assert.assertTrue(id.equals(person.getId()));
+		
 		
 	}
 		

@@ -3,6 +3,7 @@ package org.socialgraph.dao;
 import org.apache.log4j.Logger;
 import org.neo4j.graphdb.Node;
 import org.neo4j.graphdb.Transaction;
+import org.neo4j.index.IndexHits;
 import org.neo4j.index.IndexService;
 import org.socialgraph.model.Person;
 import org.socialgraph.util.ObjectConverter;
@@ -40,7 +41,11 @@ public class PersonDao extends AbstractDao {
 	public Person getByDisplayName(String name) {
 		Person person = null;
 		IndexService indexService = this.databaseMgr.getIndexService();
-		Node node = indexService.getSingleNode(Person.DISPLAY_NAME, name );
+		Node node = null;
+		IndexHits<Node> nodes = indexService.getNodes(Person.DISPLAY_NAME, name);
+		if(nodes != null && nodes.hasNext()) {
+			node = nodes.next();
+		}
 		if(node != null) {
 			try {
 				person = new Person();

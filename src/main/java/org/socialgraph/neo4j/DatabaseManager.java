@@ -18,7 +18,7 @@ public class DatabaseManager {
 	
 	private GraphDatabaseService graphDb = null;
 	
-	private String dataDir = "/tmp/graphdb";
+	private String dataDir = "/tmp/socialgraphdb";
 	private IndexService indexService;
 	
 	/**

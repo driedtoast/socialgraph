@@ -35,6 +35,7 @@ public class DatabaseManager {
 	 * Shutting down
 	 */
 	public void shutdown() {
+		indexService.shutdown();
 		graphDb.shutdown();
 	}
 	

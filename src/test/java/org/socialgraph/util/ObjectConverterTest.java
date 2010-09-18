@@ -18,11 +18,11 @@ public class ObjectConverterTest {
 
 	@Autowired
 	private DatabaseManager databaseMgr;
-	
-	
+
+
 	@Test
 	public void testObjectConversion() throws Exception {
-		GraphDatabaseService gds = databaseMgr.getDatabaseService();	
+		GraphDatabaseService gds = databaseMgr.getDatabaseService();
 		Transaction tx = databaseMgr.startTransaction();
 		Node node = gds.createNode();
 		node.setProperty("displayName", "test name2");
@@ -32,19 +32,20 @@ public class ObjectConverterTest {
 		Assert.assertNotNull(obj.getDisplayName());
 		Assert.assertTrue("test name2".equals(obj.getDisplayName()));
 	}
-	
+
 	@Test
 	public void testNodeConversion() throws Exception {
 		GraphDatabaseService gds = databaseMgr.getDatabaseService();
 		Person obj = new Person();
 		obj.setDisplayName("bob ");
 		obj.setAboutMe("who");
+		obj.setDisplayName("Bob Who");
 		Transaction tx = databaseMgr.startTransaction();
 		Node node = gds.createNode();
 		ObjectConverter.convertToNode(obj, node);
 		databaseMgr.endTransaction(tx);
 		Assert.assertNotNull(obj.getDisplayName().equals(node.getProperty("displayName")));
-		
+
 	}
-	
+
 }

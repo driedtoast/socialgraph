@@ -1,14 +1,19 @@
 package org.socialgraph.dao;
 
+import java.util.List;
+
 import org.junit.Assert;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.socialgraph.model.Person;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-
+/**
+ * Tests the person dao
+ * 
+ * 
+ * @author driedtoast
+ *
+ */
 public class PersonDaoTest extends AbstractDaoTest {
 
 	@Autowired
@@ -47,4 +52,25 @@ public class PersonDaoTest extends AbstractDaoTest {
 		
 	}
 		
+	
+	/**
+	 * Get a display name
+	 * 
+	 * @throws Exception
+	 */
+	@Test
+	public void testGetAll() throws Exception {
+		Person obj = new Person();
+		obj.setDisplayName("bob");
+		obj.setAboutMe("who");
+		personDao.savePerson(obj);
+		Long id = obj.getId();
+		Assert.assertNotNull(id);
+		
+		List<Person> people = personDao.getAllUsers();
+		Assert.assertNotNull(people);
+		Assert.assertTrue(people.size() > 0);
+	}
+	
+	
 }

@@ -127,7 +127,6 @@
 /**************************************/
 /*            MAIN CONTENT            */
 /**************************************/
-
 dataTables_wrapper { position: relative; min-height: 302px; _height: 302px; clear: both; }
 .dataTables_processing { position: absolute; top: 0px; left: 50%; width: 250px; margin-left: -125px; border: 1px solid #ddd; text-align: center; color: #999; font-size: 11px; padding: 2px 0; }
 .dataTables_length { width: 40%; float: left; }

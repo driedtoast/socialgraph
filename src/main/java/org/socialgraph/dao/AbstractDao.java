@@ -51,9 +51,22 @@ public class AbstractDao {
 		if(model.getId() == null || model.getId() < 0) {
 			node = createNode();
 		} else {
-			GraphDatabaseService gds = databaseMgr.getDatabaseService();
-			node = gds.getNodeById(model.getId());
+			node = getNode(model.getId());
 		}
+		return node;
+	}
+	
+	
+
+	/**
+	 * Gets or creates a node if needed
+	 * 
+	 * @param model
+	 * @return
+	 */
+	public Node getNode(Long id) {
+		GraphDatabaseService gds = databaseMgr.getDatabaseService();
+		Node node =  gds.getNodeById(id);
 		return node;
 	}
 	

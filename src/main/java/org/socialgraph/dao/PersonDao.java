@@ -12,7 +12,13 @@ import org.socialgraph.model.AbstractModel;
 import org.socialgraph.model.Person;
 import org.socialgraph.util.ObjectConverter;
 
-public class PersonDao extends AbstractDao {
+/**
+ * Data management for users
+ * 
+ * @author driedtoast
+ *
+ */
+public class PersonDao extends AbstractDao<Person> {
 
 	private static final Logger logger = Logger.getLogger(PersonDao.class);
 	
@@ -29,31 +35,11 @@ public class PersonDao extends AbstractDao {
 		Node node = this.getNode(person);
 		ObjectConverter.convertToNode(person, node);
 		this.setupNode(person, node);
+		// TODO put in abstract
 		IndexService indexService = this.databaseMgr.getIndexService();
 		indexService.index(node, Person.DISPLAY_NAME, person.getDisplayName());
 		indexService.index(node,AbstractModel.MODEL, Person.class.getSimpleName());
 		this.databaseMgr.endTransaction(tx);
-	}
-	
-	
-	/**
-	 * Converts a node to a person
-	 * 
-	 * @param node
-	 * @return
-	 */
-	public Person nodeToPerson(Node node) {
-		Person person = null;
-		if(node != null) {
-			try {
-				person = new Person();
-				ObjectConverter.populate(person, node);
-				this.setupNode(person, node);
-			} catch (Exception e) {
-				logger.warn("<dao> issue with converting object for node " + node.getId() , e);
-			}
-		}
-		return person;
 	}
 	
 	
@@ -72,7 +58,7 @@ public class PersonDao extends AbstractDao {
 			node = nodes.next();
 		}
 		if(node != null) {
-			person = this.nodeToPerson(node);
+			person = this.convertToObject(node);
 		}
 		return person;
 	}
@@ -85,11 +71,12 @@ public class PersonDao extends AbstractDao {
 	 * @return person 
 	 */
 	public Person getById(Long id) {
-		Person person = null;
 		Node node = this.getNode(id);
-		person = this.nodeToPerson(node);
+		Person person = this.convertToObject(node);
 		return person;
 	}
+	
+	
 	
 	/**
 	 * Get all users
@@ -97,23 +84,30 @@ public class PersonDao extends AbstractDao {
 	 * @return
 	 */
 	public List<Person> getAllUsers() {
-		List<Person> list = null;
 		// TODO paging and such
-		
-		// TODO abstract into base dao
-		IndexService indexService = this.databaseMgr.getIndexService();
-		IndexHits<Node> nodes = indexService.getNodes(AbstractModel.MODEL, Person.class.getSimpleName());
-		if(nodes != null ) {
-			list = new ArrayList<Person>();
-			while(nodes.hasNext()) {
-				Node node = nodes.next();
-				Person person = this.nodeToPerson(node);
-				if(person != null) {
-					list.add(person);
-				}
+		List<Person> list = this.listNodes(Person.class);
+		return list;
+	}
+
+
+	/**
+	 * Converts a node to a person
+	 * 
+	 * @param node
+	 * @return
+	 */
+	public Person convertToObject(Node node) {
+		Person person = null;
+		if(node != null) {
+			try {
+				person = new Person();
+				ObjectConverter.populate(person, node);
+				this.setupNode(person, node);
+			} catch (Exception e) {
+				logger.warn("<dao> issue with converting object for node " + node.getId() , e);
 			}
 		}
-		return list;
+		return person;
 	}
 	
 	

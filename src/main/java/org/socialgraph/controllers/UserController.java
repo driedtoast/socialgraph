@@ -65,9 +65,9 @@ public class UserController {
 	 */
 	@RequestMapping(value = "/user/save", method = RequestMethod.POST)
 	public String saveUser(Model model, Person person) {
-		model.addAttribute("person", person);
+		//model.addAttribute("person", person);
 		this.personDao.savePerson(person);
-		model.addAttribute("message", "User is saved");
+		//model.addAttribute("message", "User is saved");
 		return "redirect:/ui/user/index";
 	}
 

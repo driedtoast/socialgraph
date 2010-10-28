@@ -11,6 +11,9 @@
 <form action="${rc.getContextPath()}/ui/user/save" method="POST">
   
   <!-- TODO make form elemen macros -->
+  <#if person.id??>
+  <input type="hidden" name="id" value="${person.id}" />
+  </#if>
 
   <p>
   <label for="person.name.label">name</label><br />

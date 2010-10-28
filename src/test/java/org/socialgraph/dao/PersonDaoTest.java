@@ -48,8 +48,9 @@ public class PersonDaoTest extends AbstractDaoTest {
 		Long id = obj.getId();
 		Assert.assertNotNull(id);
 		
-		
-		
+		Person person = personDao.getByDisplayName("bob");
+		Assert.assertNotNull(person);
+			
 	}
 		
 	
@@ -72,5 +73,31 @@ public class PersonDaoTest extends AbstractDaoTest {
 		Assert.assertTrue(people.size() > 0);
 	}
 	
+	/**
+	 * Test remove
+	 * 
+	 * @throws Exception
+	 */
+	@Test
+	public void testRemovePerson() throws Exception {
+		Person obj = new Person();
+		obj.setDisplayName("bob5");
+		obj.setAboutMe("who");
+		personDao.savePerson(obj);
+		Long id = obj.getId();
+		Assert.assertNotNull(id);
+		
+		// make sure id is there
+		Person person = personDao.getById(id);
+		Assert.assertNotNull(person);
+		
+		personDao.deleteNode(id);
+		
+		// assert id is not there
+		person = personDao.getById(id);
+		Assert.assertNull(person);
+		
+		
+	}
 	
 }

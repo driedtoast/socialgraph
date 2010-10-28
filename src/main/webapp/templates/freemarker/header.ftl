@@ -30,14 +30,14 @@
                 <li><a href="${rc.getContextPath()}/ui/welcome/index.html">home</a></li>
                 <li><a href="#">users</a>
                         <ul>
-                            <li><a href="${rc.getContextPath()}/ui/user/edit">add user</a></li>
-                            <li><a href="${rc.getContextPath()}/ui/user/index">list users</a></li>
+                            <li><a href="${rc.getContextPath()}/ui/user/edit">add</a></li>
+                            <li><a href="${rc.getContextPath()}/ui/user/index">list</a></li>
                         </ul>
                 </li>
                 <li><a href="#">groups</a>
-                 		<ul>
-                            <li><a href="#">add group</a></li>
-                            <li><a href="#">list groups</a></li>
+                 	 <ul>
+                            <li><a href="${rc.getContextPath()}/ui/group/edit">add</a></li>
+                            <li><a href="${rc.getContextPath()}/ui/group/index">list</a></li>
                         </ul>
                 </li>
                 <li><a href="#">activity</a></li>

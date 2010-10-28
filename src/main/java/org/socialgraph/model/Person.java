@@ -116,8 +116,6 @@ public class Person extends AbstractModel  {
 											// languages that the person speaks
 											// as ISO 639-1 codes.
 	private String location; // string
-	private String name; // Name The broken-out components and fully formatted
-							// version of the person's real name.
 	private String networkPresence; // Plural-Field <string> Person's current
 									// network status. Specified as one of:
 									// AWAY, CHAT, DND, OFFLINE, ONLINE OR XA.
@@ -294,13 +292,7 @@ public class Person extends AbstractModel  {
 		this.location = location;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
+	
 
 	public String getNetworkPresence() {
 		return networkPresence;

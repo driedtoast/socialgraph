@@ -1,0 +1,138 @@
+/*!
+ * jquery.ui.potato.menu
+ * 
+ * Copyright (c) 2009-2010 makoto_kw, http://www.makotokw.com
+ * Licensed under the MIT license.
+ * 
+ * @author makoto_kw
+ * @version 1.0
+ */
+ul.potato-menu {
+	margin:0;
+	padding:0;
+	width:auto;
+	list-style:none;
+}
+.potato-menu:after {
+	content: " ";
+	display: block;
+	visibility: hidden;
+	clear: both;
+	height: 0.1px;
+	font-size: 0.1em;
+	line-height: 0;
+}
+ul.potato-menu li.potato-menu-item {
+	margin:0;
+	padding:0;
+	position:relative;
+	list-style:none;
+	list-style-position:outside;
+	display:inline;
+	float:left;
+}
+ul.potato-menu li.potato-menu-item a {
+	display:block;
+	text-decoration:none;
+	white-space:nowrap;
+	outline:0;
+}
+
+ul.potato-menu li.potato-menu-item a:hover {
+	background: #4E9FC2;
+	
+	-moz-border-radius: 4px 4px 4px 4px;  
+	
+        -webkit-border-top-left-radius: 4px;     	
+	-webkit-border-bottom-left-radius: 4px;
+        -webkit-border-top-right-radius: 4px;     	
+	-webkit-border-bottom-right-radius: 4px;
+        
+	border-top-left-radius: 4px;  
+	border-bottom-left-radius: 4px;
+         border-top-right-radius: 4px;  
+	border-bottom-right-radius: 4px;
+}
+
+ul.potato-menu ul.potato-menu-group {
+	margin:0;
+	padding:0;
+	-webkit-padding-start:0;
+	-webkit-padding-end:0;
+	position:absolute;
+	display:none;
+	z-index:1000;
+}
+
+
+li.potato-menu-item {
+	font-size:12px;
+}
+
+ul.potato-menu-group {
+	border-top: 1px solid #666;
+	background: #196D8A;
+	-moz-box-shadow:1px 1px 3px #ccc;
+	-webkit-box-shadow:1px 1px 3px #ccc;
+	box-shadow:1px 1px 3px #ccc;
+	
+	-moz-border-radius: 0px 8px 0px 8px;  
+	
+        -webkit-border-top-left-radius: 0px;     	
+	-webkit-border-bottom-left-radius: 8px;
+        -webkit-border-top-right-radius: 0px;     	
+	-webkit-border-bottom-right-radius: 8px;
+        
+	border-top-left-radius: 0px;  
+	border-bottom-left-radius: 8px;
+        border-top-right-radius: 0px;  
+	border-bottom-right-radius: 8px;
+}
+
+ul.potato-menu-group a {
+	width: 160px;
+}
+
+
+
+.potato-menu a {
+	padding:5px 12px 5px 12px;
+	/* background: #333; */
+	/* background: #196D8A; */
+	color: #fff;
+	padding-right:20px;
+}
+.potato-menu a:visited {
+	/* background: #333; 
+	background: #196D8A; */
+	color: #fff;
+	padding-right:20px;
+}
+
+.potato-menu a:link {
+	color: #fff;
+	padding-right:20px;
+}
+
+
+
+.potato-menu a:hover {
+/* background: #666; */
+}
+
+.potato-menu-has-vertical > a {
+ background: #196D8A; 
+}
+
+.potato-menu-has-horizontal > a {
+
+/* background: #196D8A; */
+}
+
+.potato-menu-has-vertical > a:hover {
+background: #196D8A; 
+}
+
+.potato-menu-has-horizontal > a:hover {
+background: #196D8A; 
+}

@@ -24,7 +24,7 @@ http://www.springframework.org/schema/context/spring-context.xsd">
 	  <!-- if you want to use the Spring FreeMarker macros, set this property to true -->
 	  <property name="exposeSpringMacroHelpers" value="true"/>
 	  </bean>
-	  
-	</bean>
+	
+	
 
 </beans>

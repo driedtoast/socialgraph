@@ -14,8 +14,18 @@
 	
 	    <servlet-mapping>
 	        <servlet-name>socialgraph</servlet-name>
-	        <url-pattern>/*</url-pattern>
+	        <url-pattern>/services/*</url-pattern>
 	    </servlet-mapping>
+	    
+	     <servlet-mapping>
+	        <servlet-name>socialgraph</servlet-name>
+	        <url-pattern>/ui/*</url-pattern>
+	    </servlet-mapping>
+	    
+	    <welcome-file-list>
+	    	<welcome-file>ui/welcome/index.html</welcome-file>
+	    	<welcome-file>index.html</welcome-file>
+	    </welcome-file-list>
 					
 					
 </web-app>

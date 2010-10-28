@@ -30,13 +30,12 @@ public class UserController {
 	 * @return
 	 */
 	@RequestMapping(value = "/user/edit/{id}")
-	public String editUser(@PathVariable("id") String id, Model model) {
+	public String editUser(@PathVariable("id") Long id, Model model) {
 		Person person = null;
-		if (StringUtils.isEmpty(id)) {
+		if (id == null || id == -1) {
 			person = new Person();
 		} else {
-			Long idValue = Long.parseLong(id);
-			person = personDao.getById(idValue);
+			person = personDao.getById(id);
 		}
 		model.addAttribute(person);
 		return "user/edit";
@@ -71,6 +70,22 @@ public class UserController {
 		return "redirect:/ui/user/index";
 	}
 
+	/**
+	 * Delete user
+	 * 
+	 * @param id
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value = "/user/delete/{id}")
+	public String deleteUser(@PathVariable("id") Long id, Model model) {
+		personDao.deleteNode(id);
+		return "redirect:/ui/user/index";
+	}
+	
+	
+	
+	
 	/**
 	 * Get a list of users
 	 * 

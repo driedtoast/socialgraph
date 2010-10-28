@@ -132,7 +132,7 @@ dataTables_wrapper { position: relative; min-height: 302px; _height: 302px; clea
 .dataTables_length { width: 40%; float: left; }
 .dataTables_filter { width: 50%; float: right; text-align: right; }
 .dataTables_info { width: 40%; float: left; padding-top: 10px; }
-.dataTables_paginate { width: 44px; * width: 50px; float: right; text-align: right; padding-top: 10px; }
+.dataTables_paginate { width: 50%; float: right; text-align: right; padding-top: 10px; line-height: 15px; border: 1px; }
 .paginate_disabled_previous, .paginate_enabled_previous, .paginate_disabled_next, .paginate_enabled_next { height: 19px; width: 19px; margin-left: 3px; float: left; }
 .paginate_disabled_previous { background-image: url('../datatable/images/back_disabled.jpg'); }
 .paginate_enabled_previous { background-image: url('../datatable/images/back_enabled.jpg'); }

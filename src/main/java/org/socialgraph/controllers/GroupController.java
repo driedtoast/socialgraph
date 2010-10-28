@@ -30,13 +30,12 @@ public class GroupController {
 	 * @return
 	 */
 	@RequestMapping(value = "/group/edit/{id}")
-	public String editOrg(@PathVariable("id") String id, Model model) {
+	public String editOrg(@PathVariable("id") Long id, Model model) {
 		Organization org = null;
-		if (StringUtils.isEmpty(id)) {
+		if (id  == null || id == -1) {
 			org = new Organization();
 		} else {
-			Long idValue = Long.parseLong(id);
-			org = organizationDao.getById(idValue);
+			org = organizationDao.getById(id);
 		}
 		model.addAttribute("org",org);
 		return "group/edit";
@@ -72,13 +71,27 @@ public class GroupController {
 	}
 
 	/**
+	 * Delete org
+	 * 
+	 * @param id
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value = "/group/delete/{id}")
+	public String deleteOrg(@PathVariable("id") Long id, Model model) {
+		organizationDao.deleteNode(id);
+		return "redirect:/ui/group/index";
+	}
+	
+	
+	/**
 	 * Get a list of groups
 	 * 
 	 * @param model
 	 * @return
 	 */
 	@RequestMapping(value = "/group/index")
-	public String listUsers(Model model) {
+	public String listOrgs(Model model) {
 		List<Organization> orgs = organizationDao.getAllOrgs(); // need paging
 		model.addAttribute("list", orgs);
 		return "group/index";

@@ -21,7 +21,7 @@
         <tr>
 		<td>${person.displayName!"N/A"}</td>
 		<td>${person.name!"N/A"}</td>
-		<td><a href="${rc.getContextPath()}/ui/user/edit/${person.id}">edit</a></td>
+		<td><a href="${rc.getContextPath()}/ui/user/edit/${person.id}">edit</a> | <a href="${rc.getContextPath()}/ui/user/delete/${person.id}">delete</a></td>
 	</tr>
 </#list>
 </tbody>
@@ -29,7 +29,7 @@
 
 <script type="text/javascript">
 $(function() {
-        $("#userstable").dataTable({"bJQueryUI": true, "sPaginationType": "full_numbers" });
+        $("#userstable").dataTable({"bJQueryUI": false, "sPaginationType": "full_numbers" });
 });
 </script>
 

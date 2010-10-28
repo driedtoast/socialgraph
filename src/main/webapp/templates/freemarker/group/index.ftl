@@ -19,7 +19,7 @@
 <#list list as org>
         <tr>
 		<td>${org.name!"N/A"}</td>
-		<td><a href="${rc.getContextPath()}/ui/group/edit/${org.id}">edit</a></td>
+		<td><a href="${rc.getContextPath()}/ui/group/edit/${org.id}">edit</a> | <a href="${rc.getContextPath()}/ui/group/delete/${org.id}">delete</a></td>
 	</tr>
 </#list>
 </tbody>
@@ -27,7 +27,7 @@
 
 <script type="text/javascript">
 $(function() {
-        $("#orgstable").dataTable({"bJQueryUI": true, "sPaginationType": "full_numbers" });
+        $("#orgstable").dataTable({"bJQueryUI": false, "sPaginationType": "full_numbers" });
 });
 </script>
 

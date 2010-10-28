@@ -21,6 +21,15 @@ The goals of the inital version is to:
 * send invites to users - allowing registration
 * integration with third-party social apis
 
+h2. Building and Running
+
+Build uses maven 2, build by:
+* mvn clean package
+
+You can run with the following:
+* mvn clean jetty:run
+* go to social graph in browser "http://localhost:8080/socialgraph/":http://localhost:8080/socialgraph/
+
 
 h2. License
 

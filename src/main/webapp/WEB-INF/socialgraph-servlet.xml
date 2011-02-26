@@ -7,15 +7,20 @@ http://www.springframework.org/schema/context
 http://www.springframework.org/schema/context/spring-context.xsd">
 
 	<import resource="classpath*:/spring-context/socialgraph-context.xml" />
-	
+
 	<context:component-scan base-package="org.socialgraph" />
 	<bean id="annotationHandlerMapping" class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
 	<bean id="annotationHandlerAdapter"  class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
 
+	<!-- this MessageSource is being used in a web application -->
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename" value="props/messages_en"/>
+	</bean>
+
 	<bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
 	  <property name="templateLoaderPath" value="/templates/freemarker/"/>
 	</bean>
-	
+
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
 	  <property name="cache" value="true"/>
 	  <property name="prefix" value=""/>
@@ -24,7 +29,7 @@ http://www.springframework.org/schema/context/spring-context.xsd">
 	  <!-- if you want to use the Spring FreeMarker macros, set this property to true -->
 	  <property name="exposeSpringMacroHelpers" value="true"/>
 	  </bean>
-	
-	
+
+
 
 </beans>

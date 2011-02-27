@@ -1,5 +1,4 @@
 <#include "/header.ftl" >
-<#import "/spring.ftl" as spring >
 
 <span class="large">Edit User</span>
 
@@ -15,29 +14,10 @@
   <input type="hidden" name="id" value="${person.id}" />
   </#if>
 
-  <p>
-  <label for="person.name.label"><@spring.message "person.name"/></label><br />
-  <@spring.bind "person.name" />
-  <input type="text"
-    id="${spring.status.expression}"
-    name="${spring.status.expression}"
-    value="${spring.status.value?default("")}"
-    class="text" />
-    <!-- make fancier errors -->
-<#list spring.status.errorMessages as error> <b>${error}</b> <br /> </#list>
-  </p>
+  	<@sg.labelWithTextBox path="person.name" />
+	<@sg.labelWithTextBox path="person.displayName" />
 
-  <p>
-  <label for="person.displayName.label"><@spring.message "person.displayName"/></label><br />
-  <@spring.bind "person.displayName" />
-  <input type="text"
-    id="${spring.status.expression}"
-    name="${spring.status.expression}"
-    value="${spring.status.value?default("")}"
-    class="text" />
-  </p>
-
-  <!-- expand to more fields -->
+   <!-- expand to more fields -->
   <p>
    <input type="submit" value="save"/>
   </p>

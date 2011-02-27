@@ -1,3 +1,4 @@
+<#include "/include.ftl" >
 <html>
 
 <head>
@@ -47,7 +48,6 @@
  <div class="container">
     <div class="span-16 last">
 	<!-- start content -->
-	
-	
-	
-	
+
+
+

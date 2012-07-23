@@ -7,213 +7,240 @@
     </configurations>
 
 	<dependencies>
-		<dependency org="junit" 
+      <dependency org="junit"
 			name="junit"
 			rev="4.7"
-			config="test->default" />
+			>
+          <conf name="test->default" />
+		</dependency>
 
 		  <dependency
          		org="org.neo4j"
-         		name="neo4j-kernel"
-         		rev="1.1-SNAPSHOT" 
-			config="runtime->default" />
+         		name="neo4j"
+         		rev="1.8.M06" 
+			>
+                    <conf name="runtime->default" />
+
+		</dependency>
+
 
 		<dependency
 			org="org.springframework"
 			name="spring-test"
 			rev="${spring.version}"
-			config="test->default" 
-		/>
+		>
+                    <conf name="test->default" />
+		</dependency>
 
 		<!-- seems like spring-test should pull these dumb things in! -->
 		<dependency 
 			org="org.springframework"
 			name="spring-beans"
 			rev="${spring.version}"
-					    config="runtime->default"
-		/>
+			>
+                    <conf name="runtime->default" />
+         </dependency>
+
 		<dependency 
 			org="org.springframework"
 			name="spring-core"
 			rev="${spring.version}"
-					    config="runtime->default"
-		/>
+		>
+                    <conf name="runtime->default" />
+		</dependency>
+
 		<dependency 
 			org="org.springframework"
 			name="spring-context"
 			rev="${spring.version}"
-					    config="runtime->default"
-		/>
+		>
+                    <conf name="runtime->default" />
+		</dependency>
+
 		<dependency 
 			org="org.springframework"
 			name="spring-context-support"
 			rev="${spring.version}"
-					    config="runtime->default"
-		/>
+		>
+                    <conf name="runtime->default" />
+		</dependency>
+
 		<dependency 
 			org="org.springframework"
 			name="spring-web"
 			rev="${spring.version}"
-					    config="runtime->default"
-		/>
+		>
+                    <conf name="runtime->default" />
+		</dependency>
+
 		<dependency 
 			org="org.springframework"
 			name="spring-webmvc"
 			rev="${spring.version}"
-					    config="runtime->default">
-				<exclusion
+			>
+                    <conf name="runtime->default" />
+				<exclude
 					org="javax.servlet"
 					name="jsp-api" />
-				<exclusion 
+				<exclude 
 					org="javax.servlet"
 					name="jstl" />
-				<exclusion
+				<exclude
 					org="ant"
 					name="ant" />
-				<exclusion 
+				<exclude 
 					org="qdox"
 					name="qdox" />
-				<exclusion 
+				<exclude 
 					org="com.lowagie"
 					name="itext" />
-				<exclusion 
+				<exclude 
 					org="bouncycastle"
 					name="bcmail-jdk14" />
-				<exclusion
+				<exclude
 					org="bouncycastle"
 					name="bcprov-jdk14" />
 				<!-- add more hre -->
-				<exclusion 
+				<exclude 
 					org="jasperreports"
 					name="jasperreports" />
-				<exclusion 
+				<exclude 
 					org="jfree"
 					name="jcommon" />
-				<exclusion 
+				<exclude 
 					org="jfree"
 					name="jfreechart" />
-				<exclusion 
+				<exclude 
 					org="eclipse"
 					name="jdtcore" />
-				<exclusion 
+				<exclude 
 					org="org.apache.tiles"
 					name="tiles-api" />
-				<exclusion 
+				<exclude 
 					org="org.apache.tiles"
 					name="tiles-core" />
-				<exclusion
+				<exclude
 					org="org.apache.tiles"
 					name="tiles-jsp" />
-				<exclusion
+				<exclude
 					org="org.apache.poi"
 					name="poi" />
-				<exclusion 
+				<exclude 
 					org="velocity-tools"
 					name="velocity-tools-generic" />
-				<exclusion
+				<exclude
 					org="velocity-tools"
 					name="velocity-tools-view" />
-				<exclusion
+				<exclude
 					org="commons-httpclient"
 					name="commons-httpclient" />
-				<exclusion
+				<exclude
 					org="commons-codec"
 					name="commons-codec" />
-				<exclusion
+				<exclude
 					org="commons-io"
 					name="commons-io" />
-				<exclusion
+				<exclude
 					org="commons-fileupload"
 					name="commons-fileupload" />
 
-				<exclusion
+				<exclude
 					org="commons-attributes"
 					name="commons-attributes-api" />
 
-				<exclusion
+				<exclude
 					org="commons-attributes"
 					name="commons-attributes-compile" />
-				<exclusion 
+				<exclude 
 					org="jexcelapi"
 					name="jxl" />
-				<exclusion
+				<exclude
 					org="velocity"
 					name="velocity" />
+				<exclude
+					org="com.caucho"
+					name="com.springsource.com.caucho" />
 		</dependency>
 
 		<dependency 
 			org="org.slf4j"
 			name="slf4j-api"
 			rev="1.4.2"
-					    config="runtime->default"
-		/>
+		>
+                    <conf name="runtime->default" />
+
+		</dependency>
 
 		<dependency 
 			org="log4j"
 			name="log4j"
 			rev="1.2.15"
-					    config="runtime->default">
-				<exclusion
-					org="javax.jms"
-					name="jms" />
-				<exclusion 
-					org="javax.mail"
-					name="mail" />
-				<exclusion
-					org="com.sun.jdmk"
-					name="jmxtools" />
-				<exclusion 
-					org="com.sun.jmx"
-					name="jmxri" />
+			>
+                    <conf name="runtime->default" />
+
 		</dependency>
 
 		<dependency 
 			org="commons-lang"
 			name="commons-lang"
 			rev="2.5"
-					    config="runtime->default"
-		/>
+		>
+                    <conf name="runtime->default" />
+		</dependency>
+
 		
 		<dependency 
 			org="org.slf4j"
 			name="slf4j-log4j12"
 			rev="1.4.2"
-					    config="runtime->default"
-		/>
+		>
+                    <conf name="runtime->default" />
+		</dependency>
+
 
 		<dependency 
 			org="org.freemarker"
 			name="freemarker"
 			rev="2.3.15"
-					    config="runtime->default"
-		/>
+		>
+                    <conf name="runtime->default" />
+		</dependency>
+
 	
 		<dependency 
 			org="org.apache.lucene"
 			name="lucene-core"
 			rev="${lucene.version}"
-					    config="runtime->default"
-		/> 
+		> 
+                    <conf name="runtime->default" />
+		</dependency>
+
 		<dependency 
 			org="org.apache.lucene"
 			name="lucene-snowball"
-			rev="${lucene.version}"
-					    config="runtime->default"
-		/>
+			rev="3.0.3"
+		>
+                    <conf name="runtime->default" />
+		</dependency>
+
 
 		<dependency 
 			org="org.apache.lucene"
 			name="lucene-spellchecker"
 			rev="${lucene.version}"
-			config="runtime->default"
-		/>
+		>
+                    <conf name="runtime->default" />
+		</dependency>
+
 
 		<dependency 
 			org="org.apache.lucene"
 			name="lucene-similarity"
 			rev="2.2.0"
-			config="runtime->default"
-		/>
+		>
+                    <conf name="runtime->default" />
+		</dependency>
+
 
 		<!--  internal dependencies  -->
 		
@@ -221,7 +248,17 @@
 		    org="javax.servlet"
 		    name="servlet-api"
 		    rev="2.5"
-		    config="runtime->default"
-		/>
+		>
+                    <conf name="runtime->default" />
+		</dependency>
+
+      <exclude org="javax.jms" artifact="jms" />
+      <exclude org="javax.mail" artifact="mail" />
+      <exclude org="com.sun.jdmk" artifact="jmxtools" />
+      <exclude org="com.sun.jmx" artifact="jmxri" />
+      <exclude org="org.hibernate"
+               artifact="com.springsource.org.hibernate.validator" />
+      <exclude org="com.bea.commonj"
+               artifact="com.springsource.commonj" />
 	</dependencies>
 </ivy-module>

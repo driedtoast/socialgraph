@@ -1,29 +1,18 @@
 <ivysettings>
         <properties file="${ivy.settings.dir}/ivysettings-file.properties" />
-        <settings defaultCache="${cache.dir}" defaultResolver="chainedresolver" checkUpToDate="false" />
-        <resolvers>
-		<chain name="chainedresolver" returnFirst="true">
-                <ibiblio name="ibiblio"  m2compatible="true" />
+	<property name="spring.version" value="3.1.2.RELEASE"/>
+	<property name="lucene.version" value="3.6.1"/>
 
-                <url name="com.springsource.repository.bundles.release">
-					<ivy pattern="http://repository.springsource.com/ivy/bundles/release/[organisation]/[module]/[revision]/[artifact]-[revision].[ext]" />
-					<artifact pattern="http://repository.springsource.com/ivy/bundles/release/[organisation]/[module]/[revision]/[artifact]-[revision].[ext]" />
-				</url>
+        <settings defaultResolver="default" overwriteMode="different" />
+  <include file="ivysettings-public.xml"/>
+ <include url="${ivy.default.settings.dir}/ivysettings-shared.xml"/>
+  <include url="${ivy.default.settings.dir}/ivysettings-local.xml"/>
+  <include url="${ivy.default.settings.dir}/ivysettings-main-chain.xml"/>
+  <include url="${ivy.default.settings.dir}/ivysettings-default-chain.xml"/>
 
-				<url name="com.springsource.repository.bundles.external">
-					<ivy pattern="http://repository.springsource.com/ivy/bundles/external/[organisation]/[module]/[revision]/[artifact]-[revision].[ext]" />
-					<artifact pattern="http://repository.springsource.com/ivy/bundles/external/[organisation]/[module]/[revision]/[artifact]-[revision].[ext]" />
-				</url>
 
-				<ibiblio name="neo4j-public-repository" m2compatible="true" root="http://m2.neo4j.org" />
-                
-                <filesystem name="internal">
-                        <ivy pattern="${repository.dir}/[module]/ivy-[revision].xml" />
-                        <artifact pattern="${repository.dir}/[module]/[artifact]-[revision].[ext]" />
-                </filesystem>
-		</chain>
-        </resolvers>
+
         <modules>
-                <module organisation="org.socialgraph" name=".*" resolver="internal" />
+                <module organisation="org.socialgraph" name=".*" resolver="local" />
         </modules>
 </ivysettings>

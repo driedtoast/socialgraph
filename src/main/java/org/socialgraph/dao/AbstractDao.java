@@ -5,13 +5,14 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.neo4j.graphdb.DynamicLabel;
 import org.neo4j.graphdb.GraphDatabaseService;
 import org.neo4j.graphdb.Node;
 import org.neo4j.graphdb.NotFoundException;
 import org.neo4j.graphdb.Relationship;
+import org.neo4j.graphdb.ResourceIterable;
 import org.neo4j.graphdb.Transaction;
-import org.neo4j.index.IndexHits;
-import org.neo4j.index.IndexService;
+import org.neo4j.tooling.GlobalGraphOperations;
 import org.socialgraph.model.AbstractModel;
 import org.socialgraph.neo4j.DatabaseManager;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,9 +48,9 @@ public abstract class AbstractDao<T> {
 	 * 
 	 * @return
 	 */
-	public Node createNode() {
+	public Node createNode(String name) {
 		GraphDatabaseService gds = databaseMgr.getDatabaseService();
-		return gds.createNode();
+		return gds.createNode(DynamicLabel.label(name));
 	}
 
 	/**
@@ -61,7 +62,7 @@ public abstract class AbstractDao<T> {
 	public Node getNode(AbstractModel model) {
 		Node node = null;
 		if(model.getId() == null || model.getId() < 0) {
-			node = createNode();
+			node = createNode(model.getClass().getSimpleName());
 		} else {
 			node = getNode(model.getId());
 		}
@@ -106,7 +107,7 @@ public abstract class AbstractDao<T> {
 		GraphDatabaseService gds = databaseMgr.getDatabaseService();
 		Node node = null;
 		try {
-			node =gds.getNodeById(id);
+			node = gds.getNodeById(id);
 		} catch(NotFoundException nfe) {
 			logger.info(id + " is not found in db ", nfe);
 		}
@@ -125,19 +126,21 @@ public abstract class AbstractDao<T> {
 	public List<T> listNodes(Class clazz) {
 		List<T> list = null;
 		// TODO paging and such
+		GraphDatabaseService service = this.databaseMgr.getDatabaseService();
+		Transaction trans = this.databaseMgr.startTransaction();
 		
-		IndexService indexService = this.databaseMgr.getIndexService();
-		IndexHits<Node> nodes = indexService.getNodes(AbstractModel.MODEL, clazz.getSimpleName());
-		if(nodes != null ) {
-			list = new ArrayList<T>();
-			while(nodes.hasNext()) {
-				Node node = nodes.next();
-				T org = this.convertToObject(node);
-				if(org != null) {
-					list.add(org);
-				}
+		GlobalGraphOperations operations = GlobalGraphOperations.at(service);
+		ResourceIterable<Node> iterator = operations.getAllNodesWithLabel(DynamicLabel.label(clazz.getSimpleName()));
+		Iterator<Node> iter = iterator.iterator();
+		list = new ArrayList<T>();
+		while(iter.hasNext()) {
+			Node node = iter.next();
+			T org = this.convertToObject(node);
+			if(org != null) {
+				list.add(org);
 			}
 		}
+		this.databaseMgr.endTransaction(trans);
 		return list;
 	}
 	

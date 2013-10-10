@@ -1,7 +1,7 @@
 package org.socialgraph.neo4j;
 
-import junit.framework.Assert;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.neo4j.graphdb.GraphDatabaseService;
@@ -39,6 +39,7 @@ public class DatabaseManagerTest {
 		System.out.print( relationship.getProperty( "message" ) );
 		System.out.print( secondNode.getProperty( "message" ) );
 
+		databaseMgr.endTransaction(tx);
 	}
 	
 }

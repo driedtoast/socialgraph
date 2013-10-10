@@ -1,0 +1,96 @@
+println name
+println project.name
+
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'jetty'
+apply plugin: 'eclipse'
+
+sourceCompatibility = 1.6
+version = '1.0'
+
+repositories {
+    mavenCentral()
+    
+    maven {
+    	url "http://maven.restlet.org"
+    }
+}
+
+configurations {
+	// excludes
+	compile.exclude group: 'javax.jms', module: 'jms'
+	compile.exclude group: 'javax.mail', module: 'mail'
+	compile.exclude group: 'com.sun.jdmk', module: 'jmxtools'
+	compile.exclude group: 'com.sun.jmx', module: 'jmxri'
+	compile.exclude group: 'javax.servlet', module: 'jsp-api'
+	compile.exclude group: 'javax.servlet', module: 'jstl'
+	compile.exclude group: 'qdox', module: 'qdox'
+	compile.exclude group: 'com.lowagie', module: 'itext'
+	compile.exclude group: 'bouncycastle', module: 'bcmail-jdk14'
+	compile.exclude group: 'bouncycastle', module: 'bcprov-jdk14'
+	compile.exclude group: 'jasperreports', module: 'jasperreports'
+	compile.exclude group: 'jfree', module: 'jcommon'
+	compile.exclude group: 'jfree', module: 'jfreechart'
+	compile.exclude group: 'eclipse', module: 'jdtcore'
+	compile.exclude group: 'org.apache.tile', module: 'tiles-api'
+	compile.exclude group: 'org.apache.tile', module: 'tiles-core'
+	compile.exclude group: 'org.apache.tile', module: 'tiles-jsp'
+	compile.exclude group: 'org.apache.poi', module: 'poi'
+	compile.exclude group: 'velocity-tools', module: 'velocity-tools-generic'
+	compile.exclude group: 'velocity-tools', module: 'velocity-tools-view'
+	compile.exclude group: 'commons-httpclient', module: 'commons-httpclient'
+	compile.exclude group: 'commons-codec', module: 'commons-codec'
+	compile.exclude group: 'commons-io', module: 'commons-io'
+	compile.exclude group: 'commons-fileupload', module: 'commons-fileupload'
+	compile.exclude group: 'commons-attributes', module: 'commons-attributes-api'
+	compile.exclude group: 'commons-attributes', module: 'commons-attributes-compile'
+	compile.exclude group: 'jexcelapi', module: 'jxl'
+	compile.exclude group: 'velocity', module: 'velocity'
+}
+
+dependencies {
+	def neo4jVersion = '2.0.0-M05'
+	def springVersion = '3.2.4.RELEASE'
+	def restletVersion = '2.2-M4'
+	def mybatisVersion = '3.2.2'
+
+	// dependencies for real	
+    compile group: 'commons-collections', name: 'commons-collections', version: '3.2'
+    compile "org.mybatis:mybatis:$mybatisVersion"
+    compile "org.mybatis:mybatis:$mybatisVersion"
+    compile 'org.mybatis:mybatis-migrations:3.1.0'
+    compile "org.restlet.jse:org.restlet:$restletVersion"
+    compile "org.restlet.jse:org.restlet.ext.jetty:$restletVersion"
+    compile "org.restlet.jse:org.restlet.ext.json:$restletVersion"
+    compile "org.restlet.jse:org.restlet.ext.jackson:$restletVersion"
+    compile "org.restlet.jee:org.restlet.ext.servlet:$restletVersion"
+                
+                
+    // just to support what is there right now
+	compile "org.neo4j:neo4j:$neo4jVersion"                
+                
+	compile "org.springframework:spring-test:$springVersion"
+	compile "org.springframework:spring-beans:$springVersion"
+	compile "org.springframework:spring-core:$springVersion"
+	compile "org.springframework:spring-context:$springVersion"
+	compile "org.springframework:spring-context-support:$springVersion"
+	compile "org.springframework:spring-web:$springVersion"
+	compile "org.springframework:spring-webmvc:$springVersion"
+    compile 'commons-beanutils:commons-beanutils:1.8.3'
+    compile "org.neo4j:neo4j-kernel:$neo4jVersion"
+	compile "org.neo4j:neo4j-lucene-index:$neo4jVersion"
+                
+    compile 'org.slf4j:slf4j-api:1.4.2'
+	compile 'log4j:log4j:1.2.15'
+	compile 'commons-lang:commons-lang:2.5'
+	compile 'org.slf4j:slf4j-log4j12:1.4.2'
+	compile 'org.freemarker:freemarker:2.3.15'
+	compile 'org.apache.lucene:lucene-core:3.6.1'
+	compile 'org.apache.lucene:lucene-snowball:3.0.3'
+	compile 'org.apache.lucene:lucene-spellchecker:3.6.1'
+	compile 'org.apache.lucene:lucene-similarity:2.2.0'            
+                
+                
+    testCompile group: 'junit', name: 'junit', version: '4.+'
+}

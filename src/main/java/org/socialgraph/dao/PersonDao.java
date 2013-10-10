@@ -50,6 +50,7 @@ public class PersonDao extends AbstractDao<Person> {
 		Person person = null;
 		
 		GraphDatabaseService service = this.databaseMgr.getDatabaseService();
+		Transaction tx = this.databaseMgr.startTransaction();
 		Node node = null;
 		ResourceIterable<Node> iterator = service.findNodesByLabelAndProperty(DynamicLabel.label(Person.class.getSimpleName()), Person.DISPLAY_NAME, name);
 		Iterator<Node> iter = iterator.iterator();
@@ -59,6 +60,7 @@ public class PersonDao extends AbstractDao<Person> {
 		if(node != null) {
 			person = this.convertToObject(node);
 		}
+		this.databaseMgr.endTransaction(tx);
 		return person;
 	}
 	
@@ -70,8 +72,10 @@ public class PersonDao extends AbstractDao<Person> {
 	 * @return person 
 	 */
 	public Person getById(Long id) {
+		Transaction tx = this.databaseMgr.startTransaction();
 		Node node = this.getNode(id);
 		Person person = this.convertToObject(node);
+		this.databaseMgr.endTransaction(tx);
 		return person;
 	}
 	
@@ -83,7 +87,7 @@ public class PersonDao extends AbstractDao<Person> {
 	 * @return
 	 */
 	public List<Person> getAllUsers() {
-		// TODO paging and such
+		// TODO paging and such		
 		List<Person> list = this.listNodes(Person.class);
 		return list;
 	}

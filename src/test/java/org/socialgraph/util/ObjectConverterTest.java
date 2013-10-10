@@ -26,9 +26,11 @@ public class ObjectConverterTest {
 		Transaction tx = databaseMgr.startTransaction();
 		Node node = gds.createNode();
 		node.setProperty("displayName", "test name2");
-		databaseMgr.endTransaction(tx);
+		
 		Person obj = new Person();
 		ObjectConverter.populate(obj, node);
+		
+		databaseMgr.endTransaction(tx);
 		Assert.assertNotNull(obj.getDisplayName());
 		Assert.assertTrue("test name2".equals(obj.getDisplayName()));
 	}
@@ -43,9 +45,8 @@ public class ObjectConverterTest {
 		Transaction tx = databaseMgr.startTransaction();
 		Node node = gds.createNode();
 		ObjectConverter.convertToNode(obj, node);
-		databaseMgr.endTransaction(tx);
 		Assert.assertNotNull(obj.getDisplayName().equals(node.getProperty("displayName")));
-
+		databaseMgr.endTransaction(tx);
 	}
 
 }

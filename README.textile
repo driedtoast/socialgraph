@@ -7,13 +7,15 @@ This project will be based on:
 * Spring 3.0.0 - REST annotations and component wiring
 * Neo4j - graph database
 * Jackson - JSON serialization
+* Restlet - API framework
+* MyBatis - DB mapping integration
 
-The intent is to create a connection based application that is accessible via REST calls. It would be used by a UI, with some experiments being amplesdk for the UI. 
+The intent is to create a connection based application that is accessible via REST calls. It would be used by a UI, with some experiments being angularjs for the UI. 
 
 h2. Goals
 
 
-The goals of the inital version is to:
+The goals of the initial version is to:
 * create users
 * register users
 * add users to groups
@@ -23,11 +25,14 @@ The goals of the inital version is to:
 
 h2. Building and Running
 
-Build uses maven 2, build by:
-* mvn clean package
+Requires JDK 1.7.X.
+
+Build uses gradle, build by:
+* gradle
+
 
 You can run with the following:
-* mvn clean jetty:run
+* gradle jettyRun
 * go to social graph in browser "http://localhost:8080/socialgraph/":http://localhost:8080/socialgraph/
 
 

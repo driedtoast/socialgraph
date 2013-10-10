@@ -1,13 +1,14 @@
 package org.socialgraph.dao;
 
-import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.neo4j.graphdb.DynamicLabel;
+import org.neo4j.graphdb.GraphDatabaseService;
 import org.neo4j.graphdb.Node;
+import org.neo4j.graphdb.ResourceIterable;
 import org.neo4j.graphdb.Transaction;
-import org.neo4j.index.IndexHits;
-import org.neo4j.index.IndexService;
 import org.socialgraph.model.AbstractModel;
 import org.socialgraph.model.Person;
 import org.socialgraph.util.ObjectConverter;
@@ -35,10 +36,6 @@ public class PersonDao extends AbstractDao<Person> {
 		Node node = this.getNode(person);
 		ObjectConverter.convertToNode(person, node);
 		this.setupNode(person, node);
-		// TODO put in abstract
-		IndexService indexService = this.databaseMgr.getIndexService();
-		indexService.index(node, Person.DISPLAY_NAME, person.getDisplayName());
-		indexService.index(node,AbstractModel.MODEL, Person.class.getSimpleName());
 		this.databaseMgr.endTransaction(tx);
 	}
 	
@@ -51,11 +48,13 @@ public class PersonDao extends AbstractDao<Person> {
 	 */
 	public Person getByDisplayName(String name) {
 		Person person = null;
-		IndexService indexService = this.databaseMgr.getIndexService();
+		
+		GraphDatabaseService service = this.databaseMgr.getDatabaseService();
 		Node node = null;
-		IndexHits<Node> nodes = indexService.getNodes(Person.DISPLAY_NAME, name);
-		if(nodes != null && nodes.hasNext()) {
-			node = nodes.next();
+		ResourceIterable<Node> iterator = service.findNodesByLabelAndProperty(DynamicLabel.label(Person.class.getSimpleName()), Person.DISPLAY_NAME, name);
+		Iterator<Node> iter = iterator.iterator();
+		if(iter.hasNext()) {
+			node = iter.next();
 		}
 		if(node != null) {
 			person = this.convertToObject(node);

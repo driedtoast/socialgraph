@@ -28,7 +28,10 @@ h2. Building and Running
 Requires JDK 1.7.X.
 
 Build uses gradle, build by:
-* gradle
+* gradle war
+
+Setup eclipse with: 
+* gradle eclipse
 
 
 You can run with the following:

@@ -39,6 +39,24 @@ You can run with the following:
 * go to social graph in browser "http://localhost:8080/socialgraph/":http://localhost:8080/socialgraph/
 
 
+h2. TODO
+
+* Update to use mysql and postgres
+* Make it all rest with just widget like ui for the interaction 
+* Add interactions:
+** Registration
+** Login - https://code.google.com/p/socialauth/wiki/GettingStarted
+** Login via Google 
+** Login via Facebook
+** Login via Yahoo - http://developer.yahoo.com/social/sdk/
+** Add Connection / Invite
+** List Connections
+** Create Group
+** Manage users in a group
+
+h2. Resources
+* Ian Robinson's graphs and neo4j "http://iansrobinson.com/":http://iansrobinson.com/
+
 h2. License
 
 Project is licensed under the "Apache 2 License":http://www.apache.org/licenses/LICENSE-2.0 
